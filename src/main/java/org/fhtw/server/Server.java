@@ -2,6 +2,7 @@ package org.fhtw.server;
 
 import org.fhtw.dao.SavableImplementation;
 import org.fhtw.thread.ClientHandler;
+import org.fhtw.validator.MessageValidator;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -21,7 +22,7 @@ public class Server {
                 // Displaying that new client is connected to server
                 System.out.println("New client connected: " + client.getInetAddress().getHostAddress());
                 // create a new thread object
-                ClientHandler clientSock = new ClientHandler(client, new SavableImplementation());
+                ClientHandler clientSock = new ClientHandler(client, new SavableImplementation(), new MessageValidator());
                 // This thread will handle the client separately
                 new Thread(clientSock).start();
             }
