@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public interface Savable {
     void writeDataIntoFile(Message message) throws IOException;
+
     boolean findFileById(String employeeId);
 
 }
