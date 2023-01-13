@@ -33,11 +33,11 @@ public class ClientHandler implements Runnable {
 
     private final Socket clientSocket;
 
-    private AssociateService associateService;
-    private TaskService taskService;
-    private CredentialService credentialService;
-    private JwtTokenUtil jwtTokenUtil;
-    private XStream xstream;
+    private final AssociateService associateService;
+    private final TaskService taskService;
+    private final CredentialService credentialService;
+    private final JwtTokenUtil jwtTokenUtil;
+    private final XStream xstream;
 
     /**
      * Initializes a new instance of the ClientHandler class.
@@ -154,7 +154,7 @@ public class ClientHandler implements Runnable {
                                     out.writeUTF(responseJson);
                                 } catch (Exception exception) {
                                     AddTaskResponse exceptionResponse = new AddTaskResponse();
-                                    exceptionResponse.setMessage(exception.getMessage());
+                                    exceptionResponse.setMessage(exception.getLocalizedMessage());
                                     String responseJson = xstream.toXML(exceptionResponse);
                                     out.writeUTF(responseJson);
                                 }

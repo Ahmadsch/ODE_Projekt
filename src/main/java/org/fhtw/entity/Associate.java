@@ -1,7 +1,5 @@
 package org.fhtw.entity;
 
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
-
 import javax.persistence.*;
 import java.util.List;
 

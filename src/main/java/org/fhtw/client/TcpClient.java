@@ -75,7 +75,6 @@ public class TcpClient {
         String userToken;
         String employeeRole;
         while (true) {
-
             String serverResponseXml = in.readUTF();
             SignInResponse signInResponse = (SignInResponse) xstream.fromXML(serverResponseXml);
             if (signInResponse.isRequestSucceeded()) {

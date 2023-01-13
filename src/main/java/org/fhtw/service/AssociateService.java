@@ -26,7 +26,7 @@ import java.util.List;
  */
 
 public class AssociateService {
-    AssociateRepository associateRepository;
+    private final AssociateRepository associateRepository;
 
     public AssociateService(AssociateRepository associateRepository) {
         this.associateRepository = associateRepository;

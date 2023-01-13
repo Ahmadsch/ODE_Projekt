@@ -50,10 +50,7 @@ UPDATE credential SET employee_id = 6 WHERE credential_id = 11;
 UPDATE credential SET employee_id = 7 WHERE credential_id = 12;
 UPDATE credential SET employee_id = 8 WHERE credential_id = 13;
 UPDATE credential SET employee_id = 9 WHERE credential_id = 14;
-INSERT INTO task (task_id, employee_task, employee_date_from, employee_hours_spent, employee_id)
-VALUES (1, 'Complete project report', '2022-01-01', '8', 1);
-INSERT INTO task (task_id, employee_task, employee_date_from, employee_hours_spent, employee_id)
-VALUES (2, 'Attend meeting with client', '2022-01-02', '4', 1);
+
 
 
 

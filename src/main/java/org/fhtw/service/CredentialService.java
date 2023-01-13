@@ -27,8 +27,8 @@ import javax.persistence.EntityManager;
  * and returns an {@link UpdateCredentialResponse} object if the credentials is updated successfully, otherwise it throws an exception.
  */
 public class CredentialService {
-    CredentialRepository credentialRepository;
-    JwtTokenUtil jwtTokenUtil;
+    private final CredentialRepository credentialRepository;
+    private final JwtTokenUtil jwtTokenUtil;
 
 
     public CredentialService(CredentialRepository credentialRepository, JwtTokenUtil jwtTokenUtil) {
