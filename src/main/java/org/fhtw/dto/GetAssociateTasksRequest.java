@@ -10,9 +10,9 @@ import java.util.Date;
  * @author Ahmad
  */
 public class GetAssociateTasksRequest {
-    private final String startDate;
-    private final String endDate;
-    private final String token;
+    private String startDate;
+    private String endDate;
+    private String token;
 
     /**
      * Constructs a GetAssociateTasksRequest object.
@@ -27,16 +27,21 @@ public class GetAssociateTasksRequest {
 // Set the date format you expect the input to be in
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 // Parse the start and end date strings into Date objects
-        Date start = dateFormat.parse(startDate);
-        Date end = dateFormat.parse(endDate);
 
-// Check if the start date is before the end date
-        if (start.before(end)) {
-            this.startDate = startDate;
-            this.endDate = endDate;
+        if (!startDate.isEmpty() && endDate != null) {
+            Date start = dateFormat.parse(startDate);
+            Date end = dateFormat.parse(endDate);
+            // Check if the start date is before the end date
+            if (start.before(end)) {
+                this.startDate = startDate;
+                this.endDate = endDate;
+            } else if (start.equals(end)) {
+                this.startDate = startDate;
+                this.endDate = null;
+            } else {
+                throw new IllegalArgumentException("Start date must be before end date.");
+            }
             this.token = token;
-        } else {
-            throw new IllegalArgumentException("Start date must be before end date.");
         }
     }
 
@@ -60,4 +65,5 @@ public class GetAssociateTasksRequest {
     public String getToken() {
         return token;
     }
+
 }

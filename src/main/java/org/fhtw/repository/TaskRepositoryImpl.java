@@ -11,15 +11,26 @@ import java.util.List;
 
 public class TaskRepositoryImpl implements TaskRepository {
     @Override
-    public List<Task> retrieveTasksByAssociateId(String startDate,String endDate, Long associateId, EntityManager em) {
-        String query = "SELECT t FROM Task t " +
-                "WHERE t.associate.employeeId = :employeeId " +
-                "AND t.employeeDateFrom BETWEEN :startDate AND :endDate";
-        TypedQuery<Task> taskQuery = em.createQuery(query, Task.class);
-        taskQuery.setParameter("employeeId", associateId);
-        taskQuery.setParameter("startDate", startDate);
-        taskQuery.setParameter("endDate", endDate);
-        return taskQuery.getResultList();
+    public List<Task> retrieveTasksByAssociateId(String startDate, String endDate, Long associateId, EntityManager em) {
+        String query;
+        if (endDate == null) {
+            query = "SELECT t FROM Task t " +
+                    "WHERE t.associate.employeeId = :employeeId " +
+                    "AND t.employeeDateFrom = :startDate";
+            TypedQuery<Task> taskQuery = em.createQuery(query, Task.class);
+            taskQuery.setParameter("employeeId", associateId);
+            taskQuery.setParameter("startDate", startDate);
+            return taskQuery.getResultList();
+        } else {
+            query = "SELECT t FROM Task t " +
+                    "WHERE t.associate.employeeId = :employeeId " +
+                    "AND t.employeeDateFrom BETWEEN :startDate AND :endDate";
+            TypedQuery<Task> taskQuery = em.createQuery(query, Task.class);
+            taskQuery.setParameter("employeeId", associateId);
+            taskQuery.setParameter("startDate", startDate);
+            taskQuery.setParameter("endDate", endDate);
+            return taskQuery.getResultList();
+        }
     }
 
     @Override

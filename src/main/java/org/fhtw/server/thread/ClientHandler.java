@@ -16,6 +16,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.io.*;
 import java.net.Socket;
+import java.text.ParseException;
 
 /**
  * The ClientHandler is responsible for handling the communication between the clients and the server.
@@ -207,7 +208,7 @@ public class ClientHandler implements Runnable {
                     }
                 }
             }
-        } catch (IOException | AssociateNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

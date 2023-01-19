@@ -58,10 +58,21 @@ public class Server {
             xstream.alias("UpdateCredentialRequest", UpdateCredentialRequest.class);
             xstream.alias("UpdateCredentialResponse", UpdateCredentialResponse.class);
             xstream.alias("ExitRequest", ExitRequest.class);
+            xstream.alias("org.fhtw.dto.TaskDto", TaskDto.class);
+
             xstream.registerConverter(new NullConverter(), XStream.PRIORITY_VERY_HIGH);
             xstream.setMarshallingStrategy(new TreeMarshallingStrategy());
 
             JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+
+            CredentialRepositoryImpl credentialRepository = new CredentialRepositoryImpl();
+            CredentialService credentialService = new CredentialService(credentialRepository, jwtTokenUtil);
+
+            TaskRepositoryImpl taskRepository = new TaskRepositoryImpl();
+            TaskService taskService = new TaskService(taskRepository);
+
+            AssociateRepositoryImpl associateRepository = new AssociateRepositoryImpl();
+            AssociateService associateService = new AssociateService(associateRepository);
 
             while (true) {
                 // socket object to receive incoming client requests
@@ -69,7 +80,7 @@ public class Server {
                 // Displaying that new client is connected to server
                 System.out.println("New client connected: " + client.getInetAddress().getHostAddress());
                 // create a new thread object
-                ClientHandler clientSock = new ClientHandler(client, new CredentialService(new CredentialRepositoryImpl(), jwtTokenUtil), new TaskService(new TaskRepositoryImpl()), new AssociateService(new AssociateRepositoryImpl()), jwtTokenUtil, xstream);
+                ClientHandler clientSock = new ClientHandler(client, credentialService, taskService, associateService, jwtTokenUtil, xstream);
                 // This thread will handle the client separately
                 new Thread(clientSock).start();
             }

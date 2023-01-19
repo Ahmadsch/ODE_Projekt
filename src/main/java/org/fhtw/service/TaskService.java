@@ -33,14 +33,15 @@ public class TaskService {
 
     public GetAssociateTasksResponse retrieveTasksByAssociateId(GetAssociateTasksRequest getAssociateTasksRequest, Long associateId, EntityManager em) {
         GetAssociateTasksResponse getAssociateTasksResponse = new GetAssociateTasksResponse();
-        List<TaskDto> taskDtos = copyTasks(taskRepository.retrieveTasksByAssociateId(getAssociateTasksRequest.getStartDate(), getAssociateTasksRequest.getEndDate(), associateId, em));
-        if (taskDtos.isEmpty()) {
+        List<Task> tasks = taskRepository.retrieveTasksByAssociateId(getAssociateTasksRequest.getStartDate(), getAssociateTasksRequest.getEndDate(), associateId, em);
+        if (tasks.isEmpty()) {
             getAssociateTasksResponse.setTasks(null);
             getAssociateTasksResponse.setRequestSucceeded(true);
             getAssociateTasksResponse.setMessage("Empty list: Not tasks found for the period: " + getAssociateTasksRequest.getStartDate() + " and " + getAssociateTasksRequest.getEndDate());
             getAssociateTasksResponse.setStatus(HttpStatus.SC_NO_CONTENT);
             return getAssociateTasksResponse;
         }
+        List<TaskDto> taskDtos = copyTasks(tasks);
         getAssociateTasksResponse.setTasks(taskDtos);
         getAssociateTasksResponse.setMessage(getAssociateTasksResponse.getTasks().size() + " Tasks found for the period: " + getAssociateTasksRequest.getStartDate() + " and " + getAssociateTasksRequest.getEndDate());
         getAssociateTasksResponse.setRequestSucceeded(true);
@@ -57,10 +58,11 @@ public class TaskService {
         return addTaskResponse;
     }
 
+
     public static List<TaskDto> copyTasks(List<Task> tasks) {
         List<TaskDto> taskDtos = new ArrayList<>();
-        TaskDto taskDto = new TaskDto();
         for (Task task : tasks) {
+            TaskDto taskDto = new TaskDto();
             taskDto.setEmployeeTask(task.getEmployeeTask());
             taskDto.setEmployeeDateFrom(task.getEmployeeDateFrom());
             taskDto.setEmployeeHoursSpent(task.getEmployeeHoursSpent());
@@ -68,7 +70,6 @@ public class TaskService {
         }
         return taskDtos;
     }
-
 }
 
     /*
