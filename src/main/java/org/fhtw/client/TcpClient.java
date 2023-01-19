@@ -146,22 +146,12 @@ public class TcpClient {
                 System.out.print("You are a manager: Enter a command (GET_ASSOCIATE_TASKS or UPDATE_PASSWORD or EXIT): ");
                 String input = scanner.nextLine();
                 if (input.equals("GET_ASSOCIATE_TASKS")) {
-                    try {
-                        // Read the task data from the user
-                        System.out.print("Enter a startDate (yyyy-MM-dd): ");
-                        String startDate = scanner.nextLine();
-                        System.out.print("Enter the endDate (yyyy-MM-dd): ");
-                        String endDate = scanner.nextLine();
-                        GetAllAssociatesByManagerIdRequest getAllAssociatesByManagerIdRequest = new GetAllAssociatesByManagerIdRequest(userToken, startDate, endDate);
+                        GetAllAssociatesByManagerIdRequest getAllAssociatesByManagerIdRequest = new GetAllAssociatesByManagerIdRequest(userToken);
                         String request = xstream.toXML(getAllAssociatesByManagerIdRequest);
                         out.writeUTF(request);
                         String serverResponseXml = in.readUTF();
                         GetAllAssociatesByManagerIdResponse getAssociateTasksResponse = (GetAllAssociatesByManagerIdResponse) xstream.fromXML(serverResponseXml);
                         System.out.println(getAssociateTasksResponse);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
                 } else if (input.equals("UPDATE_PASSWORD")) {
                     // Read the username and password from the user
                     System.out.print("Enter the new password: ");
