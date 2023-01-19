@@ -8,7 +8,6 @@ import org.fhtw.repository.AssociateRepository;
 
 
 import javax.persistence.EntityManager;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +46,6 @@ public class AssociateService {
             getAllAssociatesByManagerIdResponse.setMessage("Empty list: This manager does not have any associates");
             return getAllAssociatesByManagerIdResponse;
         }
-
         List<AssociateDto> associateDtos = copyAssociates(associates);
         getAllAssociatesByManagerIdResponse.setAssociates(associateDtos);
         System.out.println(associateDtos);
