@@ -180,8 +180,7 @@ out.writeUTF(request);
 
 | task_id | employee_task              | employee_date_from | employee_hours_spent | employee_id |
 |---------|----------------------------|--------------------|----------------------|-------------|
-| 1       | Complete project report    | 2022-01-01         | 8                    | 1           |
-| 2       | Attend meeting with client | 2022-01-02         | 4                    | 1           |
+
 
 ## Notes
 - in `src/main/java/org/fhtw/client/` there is a client program which has been used for testing the server.
