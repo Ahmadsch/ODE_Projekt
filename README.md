@@ -96,12 +96,7 @@ AddTaskRequest addTaskRequest=new AddTaskRequest();
 A manager can view all associates that are under them by providing their token start-date and end-date for all associates task.
 
 ```java
-// Read the task data from the user
-System.out.print("Enter a startDate (yyyy-MM-dd): ");
-String startDate=scanner.nextLine();
-System.out.print("Enter the endDate (yyyy-MM-dd): ");
-String endDate=scanner.nextLine();
-GetAllAssociatesByManagerIdRequest getAllAssociatesByManagerIdRequest=new GetAllAssociatesByManagerIdRequest(userToken,startDate,endDate);
+GetAllAssociatesByManagerIdRequest getAllAssociatesByManagerIdRequest=new GetAllAssociatesByManagerIdRequest(userToken);
 String request=xstream.toXML(getAllAssociatesByManagerIdRequest);
 out.writeUTF(request);
 ```
