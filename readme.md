@@ -2,7 +2,7 @@
 - Ahmad Schurbaji (ic21b106)
 - Moris Frances (ic21b120)
 
-## Program requirements: 
+## Program idea: 
 An app which employees can use to enter task and enter times which will be tracked 
 -  Must Have Features (Genügend - 4):
 1. [x] clients will utilize a (basic) GUI. 
@@ -16,8 +16,3 @@ An app which employees can use to enter task and enter times which will be track
 2. [x]   Credentials can be reset, after signing in.
 - Overkill (Sehr Gut - 1):
 1. [x]	When user signs in as a manager, he will be able to see all its employees time sheets
-
-## Application structure
-- The Project is comprised of 2 different Applications - a client and a server that are located in 2 different folders/IDEA Projects
-- Both of them should be running at the same time
-- Instructions for compilation and running can be found in the individual projects "README.md" files
