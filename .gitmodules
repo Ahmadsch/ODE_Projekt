@@ -1,0 +1,3 @@
+[submodule "TaskManagerClient"]
+	path = TaskManagerClient
+	url = https://github.com/moris-frances/TimeTrackerClient.git
