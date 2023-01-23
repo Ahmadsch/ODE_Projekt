@@ -17,6 +17,9 @@ An app which employees can use to enter task and enter times which will be track
 - Overkill (Sehr Gut - 1):
 1. [x]	When user signs in as a manager, he will be able to see all its employees time sheets
 
+## Cloning the repository
+- Clone the repository with the "git clone "https://github.com/Ahmadsch/ODE_Projekt.git" --recurse-submodules --remote-submodules" command to also clone the client submodule
+
 ## Application structure
 - The Project is comprised of 2 different Applications - a client and a server that are located in 2 different folders/IDEA Projects
 - Both of them should be running at the same time
