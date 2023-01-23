@@ -1,4 +1,4 @@
-# ODE_Projekt
+# Time Tracker Server
 
 ## Prerequisites
 - JDK 17
@@ -178,6 +178,5 @@ out.writeUTF(request);
 
 
 ## Notes
-- in `src/main/java/org/fhtw/client/` there is a client program which has been used for testing the server.
 - the server has to be up running, when the client trys to connect
 
